@@ -55,6 +55,12 @@ function checkWinner() {
 
         if(cell0==cell1 && cell2==cell1) {
             won = true;
+            const color = currentPlayer == "X" ? "blue" :"red";
+            cells.forEach(function(cell, i) {
+                    if(i==condition[0] || i==condition[1] || i==condition[2]) {
+                        cell.style.color = color;
+                    }
+            });
             break;
         }
     }
@@ -74,6 +80,6 @@ function restartGame() {
     currentPlayer = "X";
     options = ["","","","","","","","",""];
     statusText.textContent = `${currentPlayer}'s turn`;
-    cells.forEach(cell => cell.textContent = "");
+    cells.forEach(cell => {cell.textContent = ""; cell.style.color = "black";});
     game = true;
 }
